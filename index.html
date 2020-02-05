@@ -20,9 +20,9 @@
 
 <div class="zoom-icon zoom-icon-in"></div>
 
-<div class="magazine-viewport">
+<div class="catalog-viewport">
 	<div class="container">
-		<div class="magazine">
+		<div class="catalog">
 			<!-- Next button -->
 			<div ignore="1" tabindex="1" class="next-button"></div>
 			<!-- Previous button -->
@@ -42,7 +42,7 @@ function loadApp() {
 
  	$('#canvas').fadeIn(1000);
 
- 	var flipbook = $('.magazine');
+ 	var flipbook = $('.catalog');
 
  	// Check if the CSS was already loaded
 	
@@ -55,11 +55,11 @@ function loadApp() {
 
 	flipbook.turn({
 			
-			// Magazine width
+			// catalog width
 
 			width: 922,
 
-			// Magazine height
+			// catalog height
 
 			height: 600,
 
@@ -118,7 +118,7 @@ function loadApp() {
 
 				missing: function (event, pages) {
 
-					// Add pages that aren't in the magazine
+					// Add pages that aren't in the catalog
 
 					for (var i = 0; i < pages.length; i++)
 						addPage(pages[i], $(this));
@@ -130,12 +130,12 @@ function loadApp() {
 
 	// Zoom.js
 
-	$('.magazine-viewport').zoom({
-		flipbook: $('.magazine'),
+	$('.catalog-viewport').zoom({
+		flipbook: $('.catalog'),
 
 		max: function() { 
 			
-			return largeMagazineWidth()/$('.magazine').width();
+			return largecatalogWidth()/$('.catalog').width();
 
 		}, 
 
@@ -165,7 +165,7 @@ function loadApp() {
 
 				$('#slider-bar').hide();
 				$('.made').hide();
-				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.catalog').removeClass('animated').addClass('zoom-in');
 				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
 				
 				if (!window.escTip && !$.isTouch) {
@@ -189,7 +189,7 @@ function loadApp() {
 				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
 
 				setTimeout(function(){
-					$('.magazine').addClass('animated').removeClass('zoom-in');
+					$('.catalog').addClass('animated').removeClass('zoom-in');
 					resizeViewport();
 				}, 0);
 
@@ -200,9 +200,9 @@ function loadApp() {
 	// Zoom event
 
 	if ($.isTouch)
-		$('.magazine-viewport').bind('zoom.doubleTap', zoomTo);
+		$('.catalog-viewport').bind('zoom.doubleTap', zoomTo);
 	else
-		$('.magazine-viewport').bind('zoom.tap', zoomTo);
+		$('.catalog-viewport').bind('zoom.tap', zoomTo);
 
 
 	// Using arrow keys to turn the page
@@ -215,20 +215,20 @@ function loadApp() {
 			case previous:
 
 				// left arrow
-				$('.magazine').turn('previous');
+				$('.catalog').turn('previous');
 				e.preventDefault();
 
 			break;
 			case next:
 
 				//right arrow
-				$('.magazine').turn('next');
+				$('.catalog').turn('next');
 				e.preventDefault();
 
 			break;
 			case esc:
 				
-				$('.magazine-viewport').zoom('zoomOut');	
+				$('.catalog-viewport').zoom('zoomOut');	
 				e.preventDefault();
 
 			break;
@@ -242,15 +242,15 @@ function loadApp() {
 			var page = parts[1];
 
 			if (page!==undefined) {
-				if ($('.magazine').turn('is'))
-					$('.magazine').turn('page', page);
+				if ($('.catalog').turn('is'))
+					$('.catalog').turn('page', page);
 			}
 
 		},
 		nop: function(path) {
 
-			if ($('.magazine').turn('is'))
-				$('.magazine').turn('page', 1);
+			if ($('.catalog').turn('is'))
+				$('.catalog').turn('page', 1);
 		}
 	});
 
@@ -264,9 +264,9 @@ function loadApp() {
 	// Regions
 
 	if ($.isTouch) {
-		$('.magazine').bind('touchstart', regionClick);
+		$('.catalog').bind('touchstart', regionClick);
 	} else {
-		$('.magazine').click(regionClick);
+		$('.catalog').click(regionClick);
 	}
 
 	// Events for the next button
@@ -289,7 +289,7 @@ function loadApp() {
 
 	}).click(function() {
 		
-		$('.magazine').turn('next');
+		$('.catalog').turn('next');
 
 	});
 
@@ -313,7 +313,7 @@ function loadApp() {
 
 	}).click(function() {
 		
-		$('.magazine').turn('previous');
+		$('.catalog').turn('previous');
 
 	});
 
@@ -348,14 +348,14 @@ function loadApp() {
 			if (window._thumbPreview)
 				_thumbPreview.removeClass('show');
 			
-			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+			$('.catalog').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
 
 		}
 	});
 
 	resizeViewport();
 
-	$('.magazine').addClass('animated');
+	$('.catalog').addClass('animated');
 
 }
 
@@ -380,9 +380,9 @@ function loadApp() {
  }).bind('click', function() {
 
  	if ($(this).hasClass('zoom-icon-in'))
- 		$('.magazine-viewport').zoom('zoomIn');
+ 		$('.catalog-viewport').zoom('zoomIn');
  	else if ($(this).hasClass('zoom-icon-out'))	
-		$('.magazine-viewport').zoom('zoomOut');
+		$('.catalog-viewport').zoom('zoomOut');
 
  });
 
@@ -395,7 +395,7 @@ yepnope({
 	test : Modernizr.csstransforms,
 	yep: ['./assets/javascript/lib/turn.min.js'],
 	nope: ['./assets/javascript/lib/turn.html4.min.js', './assets/styles/jquery.ui.html4.css'],
-	both: ['./assets/javascript/lib/zoom.min.js', './assets/styles/jquery.ui.css', './assets/javascript/magazine.js', './assets/styles/magazine.css'],
+	both: ['./assets/javascript/lib/zoom.min.js', './assets/styles/jquery.ui.css', './assets/javascript/catalog.js', './assets/styles/catalog.css'],
 	complete: loadApp
 });
 

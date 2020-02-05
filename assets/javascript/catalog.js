@@ -57,13 +57,13 @@ function loadPage(page, pageElement) {
 function zoomTo(event) {
 
 		setTimeout(function() {
-			if ($('.magazine-viewport').data().regionClicked) {
-				$('.magazine-viewport').data().regionClicked = false;
+			if ($('.catalog-viewport').data().regionClicked) {
+				$('.catalog-viewport').data().regionClicked = false;
 			} else {
-				if ($('.magazine-viewport').zoom('value')==1) {
-					$('.magazine-viewport').zoom('zoomIn', event);
+				if ($('.catalog-viewport').zoom('value')==1) {
+					$('.catalog-viewport').zoom('zoomIn', event);
 				} else {
-					$('.magazine-viewport').zoom('zoomOut');
+					$('.catalog-viewport').zoom('zoomOut');
 				}
 			}
 		}, 1);
@@ -90,7 +90,7 @@ function loadRegions(page, element) {
 function addRegion(region, pageElement) {
 	
 	var reg = $('<div />', {'class': 'region  ' + region['class']}),
-		options = $('.magazine').turn('options'),
+		options = $('.catalog').turn('options'),
 		pageWidth = options.width/2,
 		pageHeight = options.height;
 
@@ -113,10 +113,10 @@ function regionClick(event) {
 
 	if (region.hasClass('region')) {
 
-		$('.magazine-viewport').data().regionClicked = true;
+		$('.catalog-viewport').data().regionClicked = true;
 		
 		setTimeout(function() {
-			$('.magazine-viewport').data().regionClicked = false;
+			$('.catalog-viewport').data().regionClicked = false;
 		}, 100);
 		
 		var regionType = $.trim(region.attr('class').replace('region', ''));
@@ -142,18 +142,18 @@ function processRegion(region, regionType) {
 		case 'zoom' :
 
 			var regionOffset = region.offset(),
-				viewportOffset = $('.magazine-viewport').offset(),
+				viewportOffset = $('.catalog-viewport').offset(),
 				pos = {
 					x: regionOffset.left-viewportOffset.left,
 					y: regionOffset.top-viewportOffset.top
 				};
 
-			$('.magazine-viewport').zoom('zoomIn', pos);
+			$('.catalog-viewport').zoom('zoomIn', pos);
 
 		break;
 		case 'to-page' :
 
-			$('.magazine').turn('page', data.page);
+			$('.catalog').turn('page', data.page);
 
 		break;
 	}
@@ -208,7 +208,7 @@ function disableControls(page) {
 		else
 			$('.previous-button').show();
 					
-		if (page==$('.magazine').turn('pages'))
+		if (page==$('.catalog').turn('pages'))
 			$('.next-button').hide();
 		else
 			$('.next-button').show();
@@ -220,18 +220,18 @@ function resizeViewport() {
 
 	var width = $(window).width(),
 		height = $(window).height(),
-		options = $('.magazine').turn('options');
+		options = $('.catalog').turn('options');
 
-	$('.magazine').removeClass('animated');
+	$('.catalog').removeClass('animated');
 
-	$('.magazine-viewport').css({
+	$('.catalog-viewport').css({
 		width: width,
 		height: height
 	}).
 	zoom('resize');
 
 
-	if ($('.magazine').turn('zoom')==1) {
+	if ($('.catalog').turn('zoom')==1) {
 		var bound = calculateBound({
 			width: options.width,
 			height: options.height,
@@ -243,22 +243,22 @@ function resizeViewport() {
 			bound.width-=1;
 
 			
-		if (bound.width!=$('.magazine').width() || bound.height!=$('.magazine').height()) {
+		if (bound.width!=$('.catalog').width() || bound.height!=$('.catalog').height()) {
 
-			$('.magazine').turn('size', bound.width, bound.height);
+			$('.catalog').turn('size', bound.width, bound.height);
 
-			if ($('.magazine').turn('page')==1)
-				$('.magazine').turn('peel', 'br');
+			if ($('.catalog').turn('page')==1)
+				$('.catalog').turn('peel', 'br');
 
 			$('.next-button').css({height: bound.height, backgroundPosition: '-38px '+(bound.height/2-32/2)+'px'});
 			$('.previous-button').css({height: bound.height, backgroundPosition: '-4px '+(bound.height/2-32/2)+'px'});
 		}
 
-		$('.magazine').css({top: -bound.height/2, left: -bound.width/2});
+		$('.catalog').css({top: -bound.height/2, left: -bound.width/2});
 	}
 
-	var magazineOffset = $('.magazine').offset(),
-		boundH = height - magazineOffset.top - $('.magazine').height(),
+	var catalogOffset = $('.catalog').offset(),
+		boundH = height - catalogOffset.top - $('.catalog').height(),
 		marginTop = (boundH - $('.thumbnails > div').height()) / 2;
 
 	if (marginTop<0) {
@@ -268,12 +268,12 @@ function resizeViewport() {
 		$('.thumbnails > div').css({marginTop: marginTop});
 	}
 
-	if (magazineOffset.top<$('.made').height())
+	if (catalogOffset.top<$('.made').height())
 		$('.made').hide();
 	else
 		$('.made').show();
 
-	$('.magazine').addClass('animated');
+	$('.catalog').addClass('animated');
 	
 }
 
@@ -336,7 +336,7 @@ function setPreview(view) {
 
 // Width of the flipbook when zoomed in
 
-function largeMagazineWidth() {
+function largecatalogWidth() {
 	
 	return 2214;
 
