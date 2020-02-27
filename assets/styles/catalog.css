@@ -5,6 +5,14 @@ body {
 	padding: 0;
 }
 
+.caldera-main-logo {
+	height: 80px;
+	margin: 1vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 .catalog-viewport .container {
 	position: absolute;
 	top: 50%;
