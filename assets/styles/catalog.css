@@ -138,11 +138,35 @@ body {
 .catalog-viewport .next-button {
 	right: -22px;
 	border-radius: 0 15px 15px 0;
+	background-image: url(../pics/arrows-dark-orange.svg);
+	background-position: -38px 284px;
+	background-repeat: no-repeat;
+	-webkit-animation: 2000ms linear arrowsIn forwards;
+	animation: 2000ms linear arrowsIn forwards;
+	-webkit-animation-delay: 1000ms;
+	animation-delay: 1000ms;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
 }
 
 .catalog-viewport .previous-button {
 	left: -22px;
 	border-radius: 15px 0 0 15px;
+	background-image: url(../pics/arrows-dark-orange.svg);
+	background-position: -4px 284px;
+	background-repeat: no-repeat;
+	-webkit-animation: 2000ms linear arrowsIn forwards;
+	animation: 2000ms linear arrowsIn forwards;
+	-webkit-animation-delay: 1000ms;
+	animation-delay: 1000ms;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
 }
 
 .catalog-viewport .previous-button-hover,
@@ -152,7 +176,7 @@ body {
 
 .catalog-viewport .previous-button-hover,
 .catalog-viewport .previous-button-down {
-	background-image: url(../pics/arrows.png);
+	background-image: url(../pics/arrows-lite-orange.svg);
 	background-position: -4px 284px;
 	background-repeat: no-repeat;
 }
@@ -164,7 +188,7 @@ body {
 
 .catalog-viewport .next-button-hover,
 .catalog-viewport .next-button-down {
-	background-image: url(../pics/arrows.png);
+	background-image: url(../pics/arrows-lite-orange.svg);
 	background-position: -38px 284px;
 	background-repeat: no-repeat;
 }
@@ -324,4 +348,21 @@ body {
 	left: 0;
 	bottom: 0;
 	width: 100%;
+}
+
+@keyframes arrowsIn {
+	0% {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		filter: alpha(opacity=0);
+		-moz-opacity: 0;
+		-khtml-opacity: 0;
+		opacity: 0;
+	}
+	100% {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+		filter: alpha(opacity=1);
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		opacity: 1;
+	}
 }
