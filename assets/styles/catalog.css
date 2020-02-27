@@ -13,6 +13,16 @@ body {
 	left: 0;
 }
 
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+	.caldera-main-logo {
+		display: none;
+	}
+	body {
+		margin-top: 40px;
+	}
+}
+
+
 .catalog-viewport .container {
 	position: absolute;
 	top: 50%;
