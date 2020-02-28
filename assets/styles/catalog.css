@@ -11,6 +11,15 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+	-webkit-animation: 2000ms linear arrowsIn forwards;
+	animation: 2000ms linear arrowsIn forwards;
+	-webkit-animation-delay: 1000ms;
+	animation-delay: 1000ms;
 }
 
 @media only screen and (max-width: 767px) and (orientation: landscape) {
