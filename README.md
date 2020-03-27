@@ -1,1 +1,1 @@
-# caldera-flipw-slider-zoom
+# caldera-catalog-2020
