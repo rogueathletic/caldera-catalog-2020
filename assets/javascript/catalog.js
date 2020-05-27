@@ -46,7 +46,7 @@ function loadPage(page, pageElement) {
 
 	// Load the page
 
-	img.attr('src', 'https://rogueathletic.github.io/caldera-catalog-2020/assets/pages/' +  page + '.jpg');
+	img.attr('src', 'https://rogueathletic.github.io/caldera-catalog-2020/assets/pages/' +  page + '-large.jpg');
 
 	loadRegions(page, pageElement);
 
@@ -191,7 +191,7 @@ function loadSmallPage(page, pageElement) {
 	img.unbind('load');
 	// Loadnew page
 
-	img.attr('src', 'https://rogueathletic.github.io/caldera-catalog-2020/assets/pages/' +  page + '.jpg');
+	img.attr('src', 'https://rogueathletic.github.io/caldera-catalog-2020/assets/pages/' +  page + '-large.jpg');
 }
 
 // http://code.google.com/p/chromium/issues/detail?id=128488
